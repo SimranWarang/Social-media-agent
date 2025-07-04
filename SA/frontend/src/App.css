@@ -1,0 +1,298 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #f4f7fa, #eaf2f8);
+  color: #2c3e50;
+  scroll-behavior: smooth;
+  transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+body.dark-mode {
+  background: linear-gradient(to right, #1e1e2f, #2a2a40);
+  color: #ecf0f1;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+/* Main Container */
+.App {
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.4s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Heading */
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 35px;
+  position: relative;
+  color: inherit;
+}
+h1::after {
+  content: '';
+  display: block;
+  width: 90px;
+  height: 4px;
+  margin: 14px auto 0;
+  background: linear-gradient(to right, #3498db, #8e44ad);
+  border-radius: 2px;
+  animation: underlineGrow 2s ease infinite alternate;
+}
+@keyframes underlineGrow {
+  from { width: 60px; }
+  to { width: 90px; }
+}
+
+/* Input Section */
+.input-group {
+  margin-bottom: 35px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+input[type="text"],
+input[type="datetime-local"],
+input[type="file"] {
+  padding: 14px 22px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  width: 320px;
+  max-width: 90%;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="datetime-local"]:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
+  outline: none;
+}
+
+/* Primary Button */
+button {
+  background: linear-gradient(to right, #3498db, #8e44ad);
+  color: white;
+  border: none;
+  padding: 13px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(to right, #2980b9, #7d3c98);
+  transform: translateY(-1px);
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+}
+
+/* Table Styles */
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+}
+body.dark-mode .calendar-table {
+  background: #2f3545;
+  color: #f2f2f2;
+}
+.calendar-table th,
+.calendar-table td {
+  padding: 16px 18px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+body.dark-mode .calendar-table th {
+  background: #394052;
+  color: #dcdde1;
+}
+.calendar-table td {
+  background-color: #fff;
+  font-size: 14px;
+  color: #555;
+}
+body.dark-mode .calendar-table td {
+  background-color: #2f3545;
+  color: #e1e1e1;
+}
+.calendar-table tbody tr:hover {
+  background: #f2fbff;
+  transition: 0.3s ease;
+}
+body.dark-mode .calendar-table tbody tr:hover {
+  background: #3d4459;
+}
+.calendar-table td button {
+  padding: 9px 16px;
+  background-color: #27ae60;
+  color: white;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.calendar-table td button:hover {
+  background-color: #219150;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  animation: fadeInOverlay 0.3s ease forwards;
+}
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal Styling */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 14px;
+  padding: 32px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: calc(100% - 40px);
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: left;
+  animation: pop 0.3s ease-out;
+  scroll-behavior: smooth;
+}
+body.dark-mode .modal {
+  background: rgba(40, 40, 60, 0.95);
+  color: #f2f2f2;
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.modal h3 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: inherit;
+  margin-bottom: 20px;
+}
+.modal p {
+  margin: 12px 0;
+  line-height: 1.7;
+  font-size: 15px;
+  color: inherit;
+}
+.modal button {
+  margin-top: 24px;
+  background-color: #e74c3c;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  color: white;
+  border: none;
+  transition: background 0.3s ease;
+}
+.modal button:hover {
+  background-color: #c0392b;
+}
+
+/* Image Preview */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Lock Body Scroll */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Toggle Mode Button */
+.toggle-mode-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: #555;
+  color: #fff;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s ease;
+}
+body.dark-mode .toggle-mode-btn {
+  background: #ddd;
+  color: #222;
+}
+/* Animate calendar table rows */
+@keyframes rowFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.calendar-table tbody tr {
+  animation: rowFadeSlide 0.4s ease forwards;
+  opacity: 0; /* Start invisible, animation will make it visible */
+}
+
+/* Optional: stagger effect using nth-child */
+.calendar-table tbody tr:nth-child(1) { animation-delay: 0.05s; }
+.calendar-table tbody tr:nth-child(2) { animation-delay: 0.1s; }
+.calendar-table tbody tr:nth-child(3) { animation-delay: 0.15s; }
+.calendar-table tbody tr:nth-child(4) { animation-delay: 0.2s; }
+.calendar-table tbody tr:nth-child(5) { animation-delay: 0.25s; }
+/* ... You can extend up to nth-child(30) if needed */
+

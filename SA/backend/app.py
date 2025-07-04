@@ -14,7 +14,7 @@ load_dotenv()
 
 # === Configuration ===
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_A0PI_KEY = os.getenv("OPENAI_API_KEY")
 GOOGLE_CSE_API_KEY = os.getenv("GOOGLE_CSE_API_KEY")
 GOOGLE_CSE_ID = os.getenv("GOOGLE_CSE_ID")
 ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
