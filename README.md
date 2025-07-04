@@ -90,6 +90,6 @@ Output directory: dist
 ────────────────────────────
 👥 Team:
 
+- Simran Warang
 - Chinar Mhatre  
-- Simran Warang  
 - Riya Divekar
